@@ -22,7 +22,7 @@ public class ElementVisibilityTest {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		driver.get("https://ui.freecrm.com/register/");
-		WebElement loginBtn = driver.findElement(By.xpath("//*[@id=\"ui\"]/div/div/form/div/div[3]"));
+		WebElement loginBtn = driver.findElement(By.xpath("//*[@id=\"ui\"]/div/div/form/div/div[3]"));  
 		
 		// 1. isDisplayed() method:  applicanble for all elements
 		boolean b1 = loginBtn.isDisplayed();	// for submit button
