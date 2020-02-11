@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 // It is studied how many apartments exist in  the different URIs.
-public class GropuWork_URIs {
+public class GropuWork_URIsOfUsers {
 
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver",
@@ -24,22 +24,20 @@ public class GropuWork_URIs {
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-		System.out.println("\nIt is studied how many apartments exist in  the different URIs:");
-		driver.get("localhost:8080/apartments/");
+		System.out.println("\nIt is studied how many users exist in  the different URIs:");
+		driver.get("localhost:8080/users/");
 		WebElement text = driver.findElement(By.xpath("/html/body/pre"));
 		String dataText = text.getText();
-		System.out.println(
-				"localhost:8080/apartments/ has " + amount.countFreq("streetAddress", dataText) + " apartments.\n");
+		System.out.println("localhost:8080/users/ has " + amount.countFreq("password", dataText) + " users.\n");
 
-		ArrayList<String> uriList = new ArrayList<String>(Arrays.asList("country/Namibia", "country/Rasnska",
-				"country/Ruotsi", "country/Suomi", "Göteborg", "Helsinki", "Espoo", "Oulu", "Rundu", "Vantaa"));
+		ArrayList<String> uriList = new ArrayList<String>(Arrays.asList("", "seeker", "service", "admin"));
 
 		for (String uri : uriList) {
-			driver.get("localhost:8080/apartments/" + uri);
+			driver.get("localhost:8080/users/" + uri);
 			text = driver.findElement(By.xpath("/html/body/pre"));
 			dataText = text.getText();
-			System.out.println("localhost:8080/apartments/" + uri + " has "
-					+ amount.countFreq("streetAddress", dataText) + " apartments.");
+			System.out.println(
+					"localhost:8080/users/" + uri + " has " + amount.countFreq("password", dataText) + " users.");
 		}
 
 		driver.close();
